@@ -47,10 +47,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _vcodeController = TextEditingController();
   //分别定义两个输入框的焦点 用于切换焦点
   final FocusNode _nodeName = FocusNode();
   final FocusNode _nodePwd = FocusNode();
-
+  final FocusNode _nodeVCode = FocusNode();
   bool _isClick = false;
 
   @override
@@ -59,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _nameController.addListener(_verify);
     _passwordController.addListener(_verify);
+    _vcodeController.addListener(_verify);
   }
 
   void _verify() {
@@ -107,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+      // resizeToAvoidBottomPadding: false, //输入框抵住键盘
       body: _buildBody(),
     );
   }
@@ -150,10 +153,11 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 25,
           ),
           MyTextField(
-            focusNode: _nodePwd,
+            focusNode: _nodeVCode,
             placeHolder: '请输入验证码',
             maxLength: 6,
-            controller: _passwordController,
+            controller: _vcodeController,
+            keyboardType: TextInputType.phone,
             getVCode: () {
               print('获取验证码');
             },
