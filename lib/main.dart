@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      // resizeToAvoidBottomPadding: false, //输入框抵住键盘
+      resizeToAvoidBottomPadding: false, //输入框抵住键盘
       body: _buildBody(),
     );
   }
